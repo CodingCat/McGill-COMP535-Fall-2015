@@ -65,7 +65,7 @@ In this project, you are supposed to develop a multi-threaded server to handle c
 
 ##Simulation of Link State Routing##
 
-The basic idea of link state routing is that every router maintains its own description of the connectivity of the complete network. As a result, each router can calculates the next best hop for all possible destinations in the network. The key point in Link State Routing Protocol is to synchronize the network description in all nodes (In this project, we only consider a single LAN deployment). 
+The basic idea of link state routing is that every router maintains its own description of the connectivity of the complete network. As a result, each router can calculates the next best hop for all possible destinations in the network. The key point in Link State Routing Protocol is to synchronize the network description in all nodes. 
 
 In the following paragraphs, we will describe your tasks in this project in details.
 
@@ -144,13 +144,7 @@ When you run `detect [IP Address]` command, the Dijkstra algorithm is run over t
 The project is divided into three Programming Assignment, worthing 5%, 10% and 15% of the score respectively. The evaluation of the assignment is in the form of demo. The TA will ask the students to show different functionalities of the program and will also ask the students to explain the implementation of some code snippets.  The students are requested to finish the task in groups (no more than 2 people per group). After the deadline of ###Programming Assignment 1###
 In this assignment, you are supposed to finish the topology building functionality of the program. I will ask you to run `attach`, `start` and `neighbors` commands.  
 When you run `start`, you have to print out the log of change of the state. For example, if you `attach` to Router 1 (192.168.1.2) run `start` in Router 2 (192.168.1.3). The terminal window of Router 1 should output 
-<!--
-
-B. the remote end (R2) receives a `HELLO` message, set the status in the RouterDescription of R1 as INIT, then sends Hello to R1
-
-C. R1 receives the `HELLO` from R2, set the status of R1 as TWO_WAY, sends `HELLO` to R2
-
-D. R2 receives `HELLO` from R1, set status of R1 as TWO_WAY -->```received HELLO from 192.168.1.3;
+```received HELLO from 192.168.1.3;
 set 192.168.1.3 state to INIT;
 received HELLO from 192.168.1.3;
 set 192.168.1.3 state to TWO_WAY;
@@ -174,5 +168,19 @@ IP Address of the neighbor3
 
 
 ```###Programming Assignment 2###
-
+In the second assignment, you are supposed to synchronize the link state database when new node joins the network and find shortest path. 
+The TA will ask you to run `attach`, `start` to build different topologies and then run `detect [IP Address]` to output the short path from the router where you run the command to the destination.
+
+The expected format of output is (suppose you are running the command in 192.168.1.2, )
+
+```
+
+192.168.1.2 ->(4) 192.168.1.5 ->(3) 192.168.1.3 ->(2) 192.168.1.6
+
+
+```
+
+The number following the `->` is the weight of the link.### Programming Assignment 3 ###
+The final assignment is an advanced version of the last one. In this assignment, you will be told to run `attach`, `start` to build different topologies and then run `detect` to output shortest path; after that, you are supposed to run `connect`, `disconnect`, `quit` to change the topology, and `detect` again to output the latest version of shortest path.
+The expected format is the same with Programming Assignment 2.
 
