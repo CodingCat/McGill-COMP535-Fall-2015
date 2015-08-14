@@ -142,5 +142,37 @@ When you run `detect [IP Address]` command, the Dijkstra algorithm is run over t
 ##Evaluation##
 
 The project is divided into three Programming Assignment, worthing 5%, 10% and 15% of the score respectively. The evaluation of the assignment is in the form of demo. The TA will ask the students to show different functionalities of the program and will also ask the students to explain the implementation of some code snippets.  The students are requested to finish the task in groups (no more than 2 people per group). After the deadline of ###Programming Assignment 1###
-In this assignment, you are supposed to finish the topology building functionality of the program.
-I will ask you to run `attach`, `start` and `neighbors` commands.  
+In this assignment, you are supposed to finish the topology building functionality of the program. I will ask you to run `attach`, `start` and `neighbors` commands.  
+When you run `start`, you have to print out the log of change of the state. For example, if you `attach` to Router 1 (192.168.1.2) run `start` in Router 2 (192.168.1.3). The terminal window of Router 1 should output 
+<!--
+
+B. the remote end (R2) receives a `HELLO` message, set the status in the RouterDescription of R1 as INIT, then sends Hello to R1
+
+C. R1 receives the `HELLO` from R2, set the status of R1 as TWO_WAY, sends `HELLO` to R2
+
+D. R2 receives `HELLO` from R1, set status of R1 as TWO_WAY -->```received HELLO from 192.168.1.3;
+set 192.168.1.3 state to INIT;
+received HELLO from 192.168.1.3;
+set 192.168.1.3 state to TWO_WAY;
+```
+The window of Router 2 should print 
+```
+received HELLO from 192.168.1.2;
+set 192.168.1.2 state to TWO_WAY;```
+
+When you run `neighbors`, the window of the router where you run the command should print 
+
+```
+
+IP Address of the neighbor1
+
+IP Address of the neighbor2
+
+IP Address of the neighbor3
+
+... 
+
+
+```###Programming Assignment 2###
+
+
