@@ -1,2 +1,6 @@
 .idea
 *.jar
+target
+*.class
+*.zip
+target
