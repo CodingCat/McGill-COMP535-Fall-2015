@@ -127,8 +127,6 @@ The synchronization of Link State Database happens when the link state of a rout
 
 `LSAUPDATE` contains one or more `LSA` (Link State Advertisement) structures which summarize the latest link state of the router. To update the local link state database with the latest information, you have to distinguish the `LSAUPDATE` information generated from the same router with a monotonically increasing sequence number. The router receiving the `LSAUPDATE` only update its Link State Database when the `LSAUPDATE`'s sequence number is larger than maximum sequence number from the same router it just received.
 
-Note that the synchronization of link state database is triggered in three cases: 1) after two connected routers are both set as TWO_WAY; 2) connect; 3) disconnect. 
-
 #### Shortest Path Finding ####
 
 Based on the information saved in Link State Database, you can build the weighted graph representing the topology of the network. With the weighted graph, you can find the shortest path from the router to all the other peers with Dijkstra algorithm.
@@ -136,6 +134,10 @@ Based on the information saved in Link State Database, you can build the weighte
 When you run `detect [IP Address]` command, the Dijkstra algorithm runs over the database and output the result.
 
 ## Mapping This Document to Sketch Code ##
+
+We provide the sketch code along with this document. Please note that you should feel free to add fields, methods, helper functions to the sketch code. For example, you can choose to add one more field in the Link class to describe the cost of the link or you can add your own code in LinkStateDatabase class to finish the same task. 
+
+In this section, we provide a introduction to the sketch code.
 
 ### Router Design ###
 
@@ -181,7 +183,7 @@ Then you can run the program with the java command, e.g. "java -jar -cp router.j
 
 ##Evaluation##
 
-The project is divided into three Programming Assignment, worthing 10%, 10% and 10% of the score respectively. The evaluation of the assignment is in the form of demo. The TA will ask the students to show different functionalities of the program and will also ask the students to explain the implementation of some code snippets.  The students are requested to finish the task in groups (no more than 2 per group). ###Programming Assignment 1###
+The project is divided into three Programming Assignment, worthing 10%, 10% and 10% of the score respectively. The evaluation of the assignment is in the form of demo. The TA will ask the students to show different functionalities of the program and will also ask the students to explain the implementation of some code snippets. ###Programming Assignment 1###
 In this assignment, you are supposed to finish the topology building functionality of the program. I will ask you to run `attach`, `start` and `neighbors` commands.  
 When you run `start`, you have to print out the log of change of the state. For example, if you `attach` Router 2 to Router 1 (192.168.1.2) and run `start` in Router 2 (192.168.1.3). The terminal window of Router 1 should output 
 ```received HELLO from 192.168.1.3;
